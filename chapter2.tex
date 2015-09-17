@@ -1,0 +1,50 @@
+%\twocolumn
+
+%========================================================================
+%Beginning of Chapter 2
+%========================================================================
+
+\chapter{LITERATURE REVIEW}\label{ch:overview}
+
+This can be a hard section to write because it will force you to learn about the field that your research is a part of.
+It's also a really good place to start on your thesis because the stuff you learn here will likely drive the rest of your research.
+
+\section{Citations} \label{sec:citations}
+
+This chapter should have lots of citations and possibly several sections \cite{biom} \cite{LDA} \cite{fasta}.
+I would recommend using a tool like \sys{JabRef} to manage your citation database in \script{references.bib}.
+JabRef will allow you to lookup and import citations from Search - Web Search (F5), which will open a panel on the left where you can pick a citation database like google scholar to search for journals by title.
+
+You can check out the \emph{natbib} package for more options to the above macros, such as including text in the reference itself.
+
+Check out the macro.tex file that has all the macros I hacked up for this thesis.  I created macros for inserting figures as well as referencing figures, tables, and equations.  Use them if you wish or strike out on your own.
+
+\newpage
+\section{Equations} \label{sec:equations}
+
+An unnumbered equation array:
+
+\begin{eqnarray*}
+O_{1,max} &= &  8.0752 \quad \text{(Output 1's global maximum)} \\
+O_{1,min} &= &-6.5466  \quad \text{(Output 1's global minimum)} 
+\end{eqnarray*}
+
+An in-line math environment:
+\[
+-6.5466 \leq O_1 \leq 8.0752
+\]
+
+An equation.  Note that it is split across several lines of text.
+\begin{equation}
+\label{eq:peaks}
+\begin{split}
+z = &3(1-x)^2e^{-(x^2) - (y+1)^2} - \ldots \\
+&10(\frac{x}{5}-x^3 - y^5)e^{-x^2-y^2}- \ldots \\
+&\frac{1}{3}e^{-(x+1)^2 - y^2}
+\end{split}
+\end{equation}
+
+%========================================================================
+%End of Chapter 2
+%========================================================================
+

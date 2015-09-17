@@ -1,0 +1,10 @@
+del *.aux
+del *.bbl
+del *.blg
+del *.log
+del *.lof
+del *.lot
+del *.out
+del *.toc
+del *.lol
+del figures\png\*.bb

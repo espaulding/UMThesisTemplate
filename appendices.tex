@@ -1,0 +1,39 @@
+%this file handles all the appendices to be built into the thesis
+%to get the ordering and numbering right, follow the format below:
+
+%\appendixtitle %once
+%\appendix %once
+%\chapter{first appendix title}
+%\input{first appendix file}  %don't use \include!!
+%\newpage
+%\chapter{sedond appendix title...}
+
+%--------- these occur once --------
+\appendixtitle
+\appendix
+%-----------------------------------
+\lstset{
+  frame=bt,
+  breakatwhitespace=false,
+  captionpos=b
+}
+
+\chapter{APPENDIX I CODE}
+
+In this appendix, the source code for the data pipeline written in Perl is shown. These scripts establish the standard data format expected by the R libraries.
+
+\input{appendix_1}
+
+\newpage
+\chapter{APPENDIX II CODE}
+
+In this appendix, the source code for the R language libraries is shown. These libraries make up the framework used by the case studies for data analysis and visualization.
+
+\input{appendix_2}
+
+\newpage
+\chapter{APPENDIX III CODE}
+
+In this appendix, the source code for each of the case study analysis is shown. These scripts show thorough examples of the framework's usage.
+
+\input{appendix_3}

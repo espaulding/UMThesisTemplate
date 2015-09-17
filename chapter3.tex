@@ -1,0 +1,46 @@
+%\twocolumn
+
+\chapter{METHODS}\label{ch:methods}
+
+The methods described below are roughly organized in the order they were performed during the case studies. 
+Some methods are independent of the rest, so these methods are arranged at the end.
+
+\section{Methods Syntax And Conventions}
+
+Some of the special syntax conventions used in this document are as follows.
+
+\begin{itemize}
+\item \textit{Scientific Names} - capitalized and italicized.
+\item \script{Scripts} - bold and Courier font.
+\item \var{Variables} - italicized
+\item \func{Functions} - bold
+\item \sys{System Commands} - italicized and underlined
+\end{itemize}
+
+\clearpage %forces the latex engine to make a newpage and place any floating figures or tables BEFORE going past this point.
+
+\section{Code With Syntax Highlighting} \label{sec:code}
+  
+The tsv file must also have lineage strings available, which can be created with the bash command in \clis{code:biom}.
+
+% #1 the language to use for syntax highlighting
+% #2 the name of the folder in source
+% #3 the filename of the script
+% #4 the label used to refer to this code elsewhere in the text
+% #5 the caption used in the text and in the code listing near the table of contents
+\framecode{bash}{snippets}{convertBiom.bash}
+          {code:biom}{Convert Biom Matrix To TSV}
+
+This process is necessary because QIIME's OTU matrix output is in the biom format \cite{biom}.
+In order to convert a biom format matrix into a tsv matrix, a UNIX or Linux style operating system (OS) is recommended. 
+Ubuntu 15.2 run from VirtualBox \cite{virtualbox} was used to test the \sys{biom} command successfully at the time of this writing. 
+From a Linux based OS the \sys{biom} command can be installed in a terminal window as seen in \clis{code:pip}. 
+In order for \clis{code:pip} to work, the \sys{pip} command needs to be available. 
+Pip is the PyPA recommended tool for installing python packages, which makes it a good way to install many useful and important bioinformatics tools \cite{pip}.
+
+\framecode{bash}{snippets}{install_pip.bash}
+          {code:pip}{Install PIP}
+
+%%%%%%%%%%
+% End of Chapter 3
+%%%%%%%%%%

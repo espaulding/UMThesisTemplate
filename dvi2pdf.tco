@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<txcop:outputProfiles version="1" xmlns:txcop="http://schemas.ToolsCenter.org/TeXnicCenter/OutputProfiles.xsd">
+	<outputProfileList>
+		<outputProfile name="LaTeX =&gt;DVI =&gt; PDF" stopOnLatexError="false">
+			<texCommand execute="true" path="latex.exe" arguments="--src -interaction=nonstopmode -max-print-line=120 &quot;%Wm&quot;"/>
+			<bibTexCommand execute="true" path="bibtex.exe" arguments="&quot;%bm&quot;"/>
+			<makeIndexCommand execute="true" path="makeindex.exe" arguments="&quot;%bm&quot;"/>
+			<postProcessors>
+				<processor name="Convert DVI to PDF" path="dvipdfm.exe" arguments="&quot;%Bm.dvi&quot;" inputFile="" outputFile=""/>
+			</postProcessors>
+			<viewer path="ACRORD32.EXE" closeBeforeCompilation="true">
+				<viewProjectCommand type="dde">
+					<commandLineCommand path="" arguments=""/>
+					<ddeCommand path="ACRORD32.EXE" server="acroview" topic="control" command="[DocOpen(&quot;%bm.pdf&quot;)][FileOpen(&quot;%bm.pdf&quot;)]"/>
+				</viewProjectCommand>
+				<viewCurrentFileCommand type="dde">
+					<commandLineCommand path="" arguments=""/>
+					<ddeCommand path="ACRORD32.EXE" server="acroview" topic="control" command="[DocOpen(&quot;%bm.pdf&quot;)][FileOpen(&quot;%bm.pdf&quot;)]"/>
+				</viewCurrentFileCommand>
+				<viewCloseCommand type="dde">
+					<commandLineCommand path="" arguments=""/>
+					<ddeCommand path="" server="acroview" topic="control" command="[DocClose(&quot;%bm.pdf&quot;)]"/>
+				</viewCloseCommand>
+			</viewer>
+		</outputProfile>
+	</outputProfileList>
+</txcop:outputProfiles>

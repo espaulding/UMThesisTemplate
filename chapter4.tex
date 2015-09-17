@@ -1,0 +1,74 @@
+%\onecolumn
+%\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\setlength{\abovecaptionskip}{-5pt}
+\setlength{\floatsep}{-5pt}
+\setlength{\textfloatsep}{-5pt}
+
+\chapter{RESULTS\label{ch:results}}
+
+these results prove ...
+
+\section{Figures} \label{sec:figures}
+
+The addfigure macro, used to typset \fig{fig:mlda4c}.  Note that the caption in the list of tables is different than the caption below the figure.
+\begin{verbatim}
+\addfigure{ML_LDA_4Chamber_NoTitle}
+            {1}{Mouse LDA Plot With Four Chambers}
+            {long caption.}
+            {fig:mlda4c}
+\end{verbatim}
+
+  \addfigure{ML_LDA_4Chamber_NoTitle}
+            {1}{Mouse LDA Plot With Four Chambers}
+            {Linear Discriminant Analysis (LDA) of the four main compartments sampled from C57B1/6 strain mice (left panel) and CD-1 strain mice (right panel). Filled circles and open circles represent cohorts 1 and 2, respectively. Black dots represent the centroid for each cluster and ellipses indicate 1 standard deviation. The arrows show the flow of digesta between chambers. The plots were made using vote-determined genera shown in Tables \ref{tbl:fourchamberb} and \ref{tbl:fourchamberc}. The accuracies were 78.79\% (62.12\%)(left panel) and 63.93\% (65.57\%)(right panel). The first accuracies listed used the vote-determined genera, while the right side accuracies were for genera identified using `floating search within each fold'.}
+            {fig:mlda4c}
+
+  \clearpage 
+
+\section{Tables} \label{sec:tables}
+
+Tables can be built directly in your document, but you may find it useful to import data like a csv from an external source.
+
+  % table for 4 chamber genera
+  \begin{table}[!htb]
+      \raggedright
+      Tables \ref{tbl:fourchamberb} and \ref{tbl:fourchamberc} represent the genera identified using the voting process for the four chamber LDA plot visualized in \fig{fig:mlda4c}.
+      \begin{minipage}{.5\linewidth}
+        \centering
+        \isucaption[4 Chamber - 14 Genera Strain B]{Strain B - 14 Genera}
+        \label{tbl:fourchamberb}
+        \addtable{mouse_longitudinal}{4chamber_B_14_TAXA}
+      \end{minipage}%
+      \begin{minipage}{.5\linewidth}
+        \centering
+        \isucaption[4 Chamber - 15 Genera Strain C]{Strain C - 15 Genera}
+        \label{tbl:fourchamberc}
+        \addtable{mouse_longitudinal}{4chamber_C_15_TAXA}
+      \end{minipage}
+  \end{table}
+
+
+Example of a table directly in your document.
+
+(see \tbl{tbl:tbl_1}) with multirow, multicolumn, and cline all in use.
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c||c|c|c||c|c|}
+\hline
+\multirow{2}{*}{Sample} & \multicolumn{3}{|c||}{Point Values} & \multirow{2}{*}{${\Delta}CF$}& \multirow{2}{*}{$\overline{{\Delta}CF}$} \\ \cline{2-4}
+& $x$ & $y$ & $z$ &  & \\ \hline
+\multirow{2}{*}{1} & 0.8191 & -0.2945 & 0.0000 & -- & -- \\ \cline{2-6}
+ & -2.8080 & -0.7454 & -0.0390 & -0.0390 & -0.0390 \\ \hline 
+\multirow{2}{*}{2} & -2.8080 & -0.7454 & -0.0390 & -- & -- \\ \cline{2-6}
+ & -1.7669 & 0.0308 & -2.1083 & -2.0692 & -1.0541 \\ \hline 
+ & 0.2503 & -1.6039 & -6.5415 & -0.0055 & -2.7268 \\ \hline
+ \end{tabular}
+\isucaption[Letting the days go by]{Let the water hold me down}
+\label{tbl:tbl_1}
+\end{center}
+\end{table}
+
+%%%%%%%%%%
+% End of Chapter 4
+%%%%%%%%%%

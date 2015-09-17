@@ -1,0 +1,171 @@
+%this file contains all the macros I need/want for my thesis.
+
+%title info, replace with your version
+\newcommand{\mytitle}{Standard Caps Title }
+\newcommand{\mytitlecaps}{TITLE WITH ALL CAPS }
+
+\newcommand{\mysubtitle}{Standard Caps Sub Title}     %you may or may not even want a subtitle
+\newcommand{\mysubtitlecaps}{SUBTITLE WITH ALL CAPS}
+
+%my name, normal and last, first
+\newcommand{\me}{Your Full Name}
+\newcommand{\melastfirst}{Last, First M.}
+
+%current college and grad date information-------------------
+\newcommand{\college}{The University of Montana}
+\newcommand{\location}{Missoula, MT}
+\newcommand{\mycurrentdegree}{Master of Science}
+\newcommand{\mycurrentdegreeabbrev}{M.S.}
+\newcommand{\mygradsemester}{Summer}
+\newcommand{\mygradmonth}{August}
+\newcommand{\mygradyear}{2015}
+\newcommand{\mymajordept}{Computer Science}
+%------------------------------------------------------------
+
+%previous college and grad date information-----------------
+\newcommand{\myprevdegreetwo}{Bachelor of Science}
+\newcommand{\myprevcollegetwo}{The University of Montana}
+\newcommand{\myprevlocationtwo}{Missoula, MT}
+\newcommand{\myprevdegdatetwo}{2012}
+
+\newcommand{\myprevdegree}{Associate of Science}
+\newcommand{\myprevcollege}{The University of Montana}
+\newcommand{\myprevlocation}{Helena, MT}
+\newcommand{\myprevdegdate}{2007}
+%-----------------------------------------------------------
+
+%approval and committee members----------------------------
+	\newcommand{\gradschooldean}{J.B. Alexander S. Ross }
+
+	%committee chairman------------
+	\newcommand{\chairname}{John Doe }
+	\newcommand{\chairdept}{\mymajordept}
+	%------------------------------
+	
+	%committee member #1-----------
+	\newcommand{\committeememberonename}{Another Person }
+	\newcommand{\committeememberonedept}{\mymajordept}
+	%------------------------------
+	
+	%committee member #2 (outside dept)
+	\newcommand{\committeemembertwoname}{Amazing Scientist }
+	\newcommand{\committeemembertwodept}{Biological Sciences}
+
+	% http://holben-lab.dbs.umt.edu/cv.php
+	% http://etd.lib.umt.edu/theses/available/etd-05272008-134138/unrestricted/umi-umt-1066.pdf
+
+	%------------------------------
+%----------------------------------------------------------
+
+
+%figure, table, etc... shortcuts---------------------------
+%the tilde character prevents the wrapping of the command across
+%two lines.  Any changes to UM's formatting can be accomplished
+%by changing the text inside the {} here.
+\newcommand{\sect}[1]{Section~\ref{#1}}
+\newcommand{\eq}[1]{Equation~\eqref{#1}}
+\newcommand{\fig}[1]{Figure~\ref{#1}}
+\newcommand{\clis}[1]{Code Listing~\ref{#1}}
+\newcommand{\tbl}[1]{Table~\ref{#1}}
+\newcommand{\apdx}[1]{Appendix~\ref{#1}}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\usepackage{courier}
+% Setup special formatting commands for things like 
+% variables or system commands
+% maybe italics, bold, or even change font to like courier
+% \textit -> italics
+% \textbf -> bold
+% \underline -> underline
+\newcommand{\var}[1]{\textit{#1}}
+
+\newcommand{\sys}[1]{\textit{\underline{#1}}}
+
+\newcommand{\func}[1]{\textbf{#1}}
+
+\newcommand{\script}[1]{\texttt{\textbf{#1}}}
+
+%macros to make addfigure (see below) work ---------------
+\newcommand{\figformat}{png}	  %extension of graphics
+\newcommand{\figdir}{figures/\figformat/}  %relative to thesis.tex
+%my setup was ./figures/eps/*.eps (all fig files were eps)
+%change yours accordingly, I strongly suggest keeping all
+%figure files the same format
+%---------------------------------------------------------
+
+%single figure macro, adds to table of contents-----------
+%and can have a separate name for caption and toc entry
+%if no 3rd value, toc entry is same as caption
+%otherwise, 3rd value is toc entry
+% parameter 1 == file name (no extension
+% parameter 2 == percent of text width (up to 1.0, 0.7 is good)
+% parameter 3 == toc entry text (if blank, will use 
+%                value for parameter 4
+% parameter 4 == caption text
+% parameter 5 == label for referencing 
+\newcommand{\addfigure}[5]{%
+\begin{figure}[htbp] %h!
+\centering
+\singlespacing
+\footnotesize
+\includegraphics*[width=#2\textwidth]{\figdir#1.\figformat}
+\ifthenelse{\equal{#3}{}} %if 3 is blank
+{% then
+\isucaption[#4]{#4}
+}%
+{% else
+\isucaption[#3]{#4}
+}%
+\label{#5}
+\end{figure}
+}%
+%-------------------------------------------------------
+\newcommand{\tblformat}{csv}
+\newcommand{\tbldir}{tables/}
+
+%This will blow up if your table is too wide for the document
+%Tables in kind of a pain in LaTeX. My opinion is that making a nice
+%table in excel or open office which can be turned into a jpg or png
+%is a better route.
+\newcommand{\addtable}[2]{
+  \csvautotabular{\tbldir#1/#2.\tblformat}
+}
+%-------------------------------------------------------
+
+%code framing environment-------------------------------
+
+%1 - language for syntax highlighting
+%2 - source folder
+%3 - filename
+\newenvironment{framecode}[5]%
+{
+ %setup language specific syntax highlightning
+ % see https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Supported_languages
+ % for a list of language options
+ \lstset{language=#1} 
+ %\vspace{.5cm} 
+ \begin{singlespace}
+ \lstinputlisting[caption={#5}, label=#4]{\appdir#2/#3}
+ \end{singlespace}
+}{}
+
+
+%------------------------------------------------------
+
+\newcommand{\appdir}{source/}
+
+%1 - caption as new section
+%2 - filename
+%3 - label
+\newenvironment{dispcode}[3]%
+{
+\section{#1}\label{#3}
+\begin{singlespace}
+%\begin{footnotesize}
+%\lstinputlisting[caption={\lstname}]{\appdir/#2} %use this line if you want list of listings to show the appendix code
+\lstinputlisting{\appdir/#2}
+%\verbatiminput{\appdir/#2}
+%\end{footnotesize}
+\end{singlespace}
+}{}

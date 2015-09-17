@@ -1,0 +1,196 @@
+%Thesis template, last hacked by Eric Spaulding (March 2015)
+%This template was built via LaTex => DVI => PDF
+%if necessary, you can import the dvi2pdf.tco file
+%to get the right build (it's included).
+
+%divpdfm is the dvi=>pdf engine
+\documentclass [12 pt,dvipdfm] {report}
+\input{macros}
+\usepackage[maxfloats=100]{morefloats}
+\usepackage{isuthesis}
+
+%numbers produces [1] citations, with corresponding 
+%citation numbers next to refs in bibliography
+\usepackage[numbers]{natbib} %number format
+%\usepackage{natbib} %author year format
+
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+%\usepackage{gensymb}
+
+\usepackage{fancybox}% I use it for framing definitions
+\usepackage{csvsimple} % used to import csv files into the document as tables
+	
+\usepackage{xcolor}
+%\usepackage{color}
+
+\usepackage{amsmath, amssymb, amscd}%Contains the AMS expanded math symbols library.
+\usepackage{graphicx}
+\usepackage{rotating}   %allows figures to be rotated
+\usepackage{subfigure}  %for side-by-side figs
+\usepackage{multirow}	%for multirow stuff in tables
+\usepackage{nicefrac}	%for slanty 3/4 type fracs
+
+%this handy little package puts bookmarks in your thesis.
+%there are a ton of parameters, check it out. (hyperref)
+%it hyperlinks all your \ref commands to the object it
+%references and adds the bookmarks tab to the pdf file
+%as well.  
+%comment out to remove
+\usepackage[pdftitle={\mytitle}, 
+            pdfauthor={\me},
+            pdfkeywords={bioinformatics,
+             			 computer science,
+             			 thesis,
+             			 metagenomics},  
+            pdfstartview=FitH,   
+            pdfpagemode={None}]{hyperref} 	%gives bookmarks in pdf file
+
+
+\usepackage{listings} %this is for code listings
+
+
+%define the colors used by listings when doing syntax highlighting
+\definecolor{dkgreen}{rgb}{0,0.6,0}   
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+ captionpos=t,                    % sets the caption-position t -> top, b -> bottom
+ aboveskip=\medskipamount,        %above and below skip adds space before or after the listing
+ belowskip=\medskipamount,
+ %abovecaptionskip=\smallskipamount, 
+ %belowcaptionskip=\smallskipamount,
+ abovecaptionskip=5px,
+ belowcaptionskip=5px,
+ mathescape=false,
+ backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+ basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+ breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+ breaklines=true,                 % sets automatic line breaking
+ commentstyle=\color{dkgreen},    % comment style
+ deletekeywords={...},            % if you want to delete keywords from the given language
+ extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+ frame=single,	                   % adds a frame around the code
+ keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+ keywordstyle=\color{blue},       % keyword style
+ language=C++,                 % the language of the code
+ numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+ numbersep=5pt,                   % how far the line-numbers are from the code
+ numberstyle=\tiny\color{gray}, % the style that is used for the line-numbers
+ rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments green here))
+ showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+ showstringspaces=false,          % underline spaces within strings only
+ showtabs=false,                  % show tabs within strings adding particular underscores
+ stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+ stringstyle=\color{mauve},     % string literal style
+ tabsize=2,	                      % sets default tabsize to 2 spaces
+ title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstnewenvironment{code}[1][]%
+{
+   \noindent
+   \minipage{\linewidth} 
+   \vspace{0.5\baselineskip}
+   \lstset{basicstyle=\ttfamily\footnotesize,frame=single,#1}}
+{\endminipage}
+
+\renewcommand{\lstlistingname}{Code Listing}
+
+
+% makeatletter block is necessary to get
+% listings to stop ignoring the abovecaptionskip setting
+\makeatletter
+\let\@ORGmakecaption\@makecaption
+\long\def\@makecaption#1#2{\@ORGmakecaption{#1}{#2}\vskip\belowcaptionskip\relax}
+\makeatother
+
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+
+%any files inside {} below will be compiled, rest
+%will not.  separate multiple files with commas
+%ex.  
+%\includeonly{abstract, acknow, chapter2} will 
+%build only those files into .pdf file
+%note:  only files inserted via \include{} are
+%affected by this.  
+%=========== include only ======================
+%\includeonly{abstract}
+%===============================================
+
+\DeclareGraphicsExtensions{.png,.pdf,.jpg}
+
+%=============== comment this out to eliminate section, subsection numbering
+\alternate
+%==================================================================
+
+
+\parindent 12pt
+%\bibliographystyle{plainnat} %plainnat is the default thesis format
+\bibliographystyle{ieeetran} %only works with [numbers] option of natbib
+\renewcommand{\bibname}{BIBLIOGRAPHY}
+
+\setcounter{tocdepth}{3} %include sub sub sections in toc
+
+\begin{document}
+
+%--------------- title section -------------------------
+\include{titletocmas}
+%-------------------------------------------------------
+
+%--------------- abstract, acknowldgements -------------
+\include{abstract}
+\include{acknowl}
+%-------------------------------------------------------
+
+%---------------table of contents ----------------------
+\tableofcontents
+%-------------------------------------------------------
+
+\renewcommand\lstlistlistingname{Code Listings}
+
+%--------------- list of figs, tables ------------------
+\listoftables     
+\lstlistoflistings
+\listoffigures
+%-------------------------------------------------------
+
+\newpage
+
+\textheight 8.5in %8.5+.5headsep=9in. This leaves 1 in margin in the thesis body
+\pagenumbering{arabic}
+\pagestyle{myheadings}
+
+
+%------------ main body section -----------------------
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+%-------------------------------------------------------
+
+
+%------------- appendix section ------------------------
+% uncomment this to add appendices to paper
+%\input{appendices}
+%-------------------------------------------------------
+
+%------------ bibliography section ---------------------
+%This will remove "APPENDIX" from the Bibliography title:
+\unappendixtitle
+
+%Include bibliograpy in the Table of Contents
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+\bibliography{references}
+%-------------------------------------------------------
+
+
+
+\end{document}
+
