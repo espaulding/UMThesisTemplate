@@ -33,16 +33,16 @@ Tables can be built directly in your document, but you may find it useful to imp
   % table for 4 chamber genera
   \begin{table}[!htb]
       \raggedright
-      Tables \ref{tbl:fourchamberb} and \ref{tbl:fourchamberc} represent the genera identified using the voting process for the four chamber LDA plot visualized in \fig{fig:mlda4c}.
+      Tables \ref{tbl:fourchamberb} and \ref{tbl:fourchamberc} represent the genera identified using the voting process for the four chamber LDA plot visualized in \fig{fig:mlda4c}.\vskip 11pt
       \begin{minipage}{.5\linewidth}
         \centering
-        \isucaption[4 Chamber - 14 Genera Strain B]{Strain B - 14 Genera}
+        \isucaption[4 Chamber - 14 Genera Strain B]{Strain B - 14 genera identified using the voting process}
         \label{tbl:fourchamberb}
         \addtable{mouse_longitudinal}{4chamber_B_14_TAXA}
       \end{minipage}%
       \begin{minipage}{.5\linewidth}
         \centering
-        \isucaption[4 Chamber - 15 Genera Strain C]{Strain C - 15 Genera}
+        \isucaption[4 Chamber - 15 Genera Strain C]{Strain C - 15 genera identified using the voting process}
         \label{tbl:fourchamberc}
         \addtable{mouse_longitudinal}{4chamber_C_15_TAXA}
       \end{minipage}
@@ -53,6 +53,8 @@ Example of a table directly in your document.
 
 (see \tbl{tbl:tbl_1}) with multirow, multicolumn, and cline all in use.
 \begin{table}[h!]
+\isucaption[Letting the days go by]{Let the water hold me down}
+\label{tbl:tbl_1}
 \begin{center}
 \begin{tabular}{|c||c|c|c||c|c|}
 \hline
@@ -64,8 +66,6 @@ Example of a table directly in your document.
  & -1.7669 & 0.0308 & -2.1083 & -2.0692 & -1.0541 \\ \hline 
  & 0.2503 & -1.6039 & -6.5415 & -0.0055 & -2.7268 \\ \hline
  \end{tabular}
-\isucaption[Letting the days go by]{Let the water hold me down}
-\label{tbl:tbl_1}
 \end{center}
 \end{table}
 

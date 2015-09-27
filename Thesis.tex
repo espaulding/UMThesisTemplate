@@ -28,7 +28,7 @@
 \usepackage{amsmath, amssymb, amscd}%Contains the AMS expanded math symbols library.
 \usepackage{graphicx}
 \usepackage{rotating}   %allows figures to be rotated
-\usepackage{subfigure}  %for side-by-side figs
+\usepackage{subfig}  %for side-by-side figs
 \usepackage{multirow}	%for multirow stuff in tables
 \usepackage{nicefrac}	%for slanty 3/4 type fracs
 
@@ -159,14 +159,14 @@
 \renewcommand\lstlistlistingname{CODE LISTINGS}
 
 %--------------- list of figs, tables ------------------
-\newpage\phantomsection\specialtocchapt{LIST OF TABLES}
-\listoftables     
+\newpage\phantomsection\specialtocchapt{CODE LISTINGS}
+\lstlistoflistings
 
 \newpage\phantomsection\specialtocchapt{LIST OF FIGURES}
 \listoffigures
 
-\newpage\phantomsection\specialtocchapt{CODE LISTINGS}
-\lstlistoflistings
+\newpage\phantomsection\specialtocchapt{LIST OF TABLES}
+\listoftables     
 %-------------------------------------------------------
 
 \newpage
